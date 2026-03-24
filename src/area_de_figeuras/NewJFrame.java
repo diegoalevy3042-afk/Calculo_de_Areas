@@ -4,6 +4,7 @@
  */
 package area_de_figeuras;
 import formulas.cuadrado;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Pc-28
@@ -166,7 +167,7 @@ public class NewJFrame extends javax.swing.JFrame {
     jLabel5.setText("El área es: " + resultado);
 
 } catch (NumberFormatException e) {
-    jLabel5.setText("Error: Ingresa números válidos");
+    JOptionPane.showInternalMessageDialog(null,"Hay un problema en los numeros");
 }
         }
         
