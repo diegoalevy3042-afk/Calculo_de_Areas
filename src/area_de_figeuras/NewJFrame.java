@@ -10,7 +10,7 @@ import formulas.cuadrado;
  */
 public class NewJFrame extends javax.swing.JFrame {
     
-    cuadrado fcuadrado=new cuadrado();
+    //cuadrado Rectangulo=new cuadrado();
     
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(NewJFrame.class.getName());
@@ -88,10 +88,10 @@ public class NewJFrame extends javax.swing.JFrame {
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3))
                                 .addGap(26, 26, 26)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(49, 49, 49)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                                    .addComponent(jTextField2))
+                                .addGap(35, 35, 35)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton1)
                                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -153,6 +153,21 @@ public class NewJFrame extends javax.swing.JFrame {
         if(opcion.equals("Triangulo")){
         }
         if(opcion.equals("Cuadrado")){
+            try {
+    // 1. Obtener ambos valores de la interfaz
+    double b = Double.parseDouble(jTextField1.getText());
+    double h = Double.parseDouble(jTextField2.getText());
+    
+    // 2. Instanciar la clase mandando los dos datos
+    cuadrado miRect = new cuadrado(b, h);
+
+    // 3. Calcular y mostrar
+    double resultado = miRect.calcularArea();
+    jLabel5.setText("El área es: " + resultado);
+
+} catch (NumberFormatException e) {
+    jLabel5.setText("Error: Ingresa números válidos");
+}
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
