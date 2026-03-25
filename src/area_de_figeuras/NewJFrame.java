@@ -146,8 +146,9 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String opcion =(String)jComboBox1.getSelectedItem();
-        if(opcion.equals("Circulo")){
         
+        if(opcion.equals("Circulo")){
+        jLabel2.setText("Radio");
         }
         if(opcion.equals("Trapecio")){
         }
