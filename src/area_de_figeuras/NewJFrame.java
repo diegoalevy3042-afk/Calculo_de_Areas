@@ -152,6 +152,7 @@ public class NewJFrame extends javax.swing.JFrame {
         if(opcion.equals("Trapecio")){
         }
         if(opcion.equals("Triangulo")){
+            
         }
         if(opcion.equals("Cuadrado")){
             try {
