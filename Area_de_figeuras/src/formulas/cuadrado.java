@@ -9,23 +9,19 @@ package formulas;
  * @author Pc-28
  */
 public class cuadrado {
-public class Cuadrado {
-    private double lado;
 
-    // Constructor
-    public Cuadrado(double lado) {
-        this.lado = lado;
+    private double base;
+    private double altura;
+
+    // Constructor que recibe ambos datos
+    public cuadrado(double base, double altura) {
+        this.base = base;
+        this.altura = altura;
     }
 
-    // Método para calcular el área
     public double calcularArea() {
-        return lado * lado;
+        return base * altura;
     }
+}
 
-    // Getters y Setters (opcional, para cambiar el lado después)
-    public void setLado(double lado) {
-        this.lado = lado;
-    }
-}
-}
 

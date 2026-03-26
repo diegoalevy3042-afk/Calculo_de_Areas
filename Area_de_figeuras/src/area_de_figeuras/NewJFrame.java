@@ -4,13 +4,17 @@
  */
 package area_de_figeuras;
 import formulas.cuadrado;
+import formulas.circulo;
+import formulas.trapecio;
+import formulas.triangulo;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Pc-28
  */
 public class NewJFrame extends javax.swing.JFrame {
     
-    cuadrado fcuadrado=new cuadrado();
+    //cuadrado Rectangulo=new cuadrado();
     
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(NewJFrame.class.getName());
@@ -42,6 +46,8 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,6 +65,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jTextField2.setText("Ingrese los datos");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Circulo", "Trapecio", "Triangulo", "Cuadrado" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Calcular");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -70,6 +81,10 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel5.setText("resultado...");
 
         jLabel6.setText("Resultado:");
+
+        jLabel7.setText("Formula:");
+
+        jLabel8.setText("la formula es");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -88,19 +103,23 @@ public class NewJFrame extends javax.swing.JFrame {
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3))
                                 .addGap(26, 26, 26)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(49, 49, 49)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                                    .addComponent(jTextField2))
+                                .addGap(35, 35, 35)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton1)
                                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel8)
+                                .addGap(45, 45, 45)
+                                .addComponent(jLabel4))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4)))))
+                                .addComponent(jLabel5)))))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -120,12 +139,21 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel4)
+                        .addGap(28, 28, 28))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
+                        .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addContainerGap(125, Short.MAX_VALUE))
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -146,16 +174,113 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String opcion =(String)jComboBox1.getSelectedItem();
         if(opcion.equals("Circulo")){
-        
+                     try {
+    // 1. Obtener ambos valores de la interfaz
+    double radio = Double.parseDouble(jTextField1.getText());
+
+    
+    // 2. Instanciar la clase mandando los dos datos
+    circulo circulor = new circulo(radio);
+
+    // 3. Calcular y mostrar
+    double resultado = circulor.calcularArea();
+    jLabel5.setText("El área es: " + resultado);
+
+} catch (NumberFormatException e) {
+    JOptionPane.showInternalMessageDialog(null,"Hay un problema en los numeros");
+}
         }
+        
         if(opcion.equals("Trapecio")){
+
+                      try {
+    // 1. Obtener ambos valores de la interfaz
+    
+    double a = Double.parseDouble(jTextField1.getText());
+    double b =Double.parseDouble(jTextField2.getText());
+    
+    
+    // 2. Instanciar la clase mandando los dos datos
+    trapecio trapecioa = new trapecio(a,b);
+
+    // 3. Calcular y mostrar
+    double resultado = trapecioa.calcularArea();
+    jLabel5.setText("El área es: " + resultado);
+
+} catch (NumberFormatException e) {
+    JOptionPane.showInternalMessageDialog(null,"Hay un problema en los numeros");
+    System.err.println("el esrror el: "+e);
+}
         }
         if(opcion.equals("Triangulo")){
+                      try {
+    // 1. Obtener ambos valores de la interfaz
+    double a = Double.parseDouble(jTextField1.getText());
+    double b = Double.parseDouble(jTextField2.getText());
+
+    
+    // 2. Instanciar la clase mandando los dos datos
+    triangulo trianguloa = new triangulo(a,b);
+
+    // 3. Calcular y mostrar
+    double resultado = trianguloa.calcularArea();
+    jLabel5.setText("El área es: " + resultado);
+
+} catch (NumberFormatException e) {
+    JOptionPane.showInternalMessageDialog(null,"Hay un problema en los numeros");
+}
         }
         if(opcion.equals("Cuadrado")){
+            try {
+    // 1. Obtener ambos valores de la interfaz
+    double b = Double.parseDouble(jTextField1.getText());
+    double h = Double.parseDouble(jTextField2.getText());
+    
+    // 2. Instanciar la clase mandando los dos datos
+    cuadrado miRect = new cuadrado(b, h);
+
+    // 3. Calcular y mostrar
+    double resultado = miRect.calcularArea();
+    jLabel5.setText("El área es: " + resultado);
+
+} catch (NumberFormatException e) {
+    JOptionPane.showInternalMessageDialog(null,"Hay un problema en los numeros");
+}
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+                String opcion =(String)jComboBox1.getSelectedItem();
+        if(opcion.equals("Circulo")){
+        jLabel8.setText("solo ingrese la radio");
+        jLabel2.setText("Radio");
+         jTextField2.setText("");
+         jTextField1.setText("");
+        }
+        if(opcion.equals("Trapecio")){
+         jLabel2.setText("Altura");
+         jLabel3.setText("suma de las bases");
+         jLabel8.setText("(suma de las bases +altura)/2");
+         jTextField2.setText("");
+         jTextField1.setText("");
+        }
+        if(opcion.equals("Triangulo")){
+         jLabel2.setText("Altura");
+         jLabel3.setText("Bace");
+         jLabel8.setText("bace*altura");
+         jTextField2.setText("");
+         jTextField1.setText("");
+        }
+        if(opcion.equals("Cuadrado")){
+         jLabel2.setText("Altura");
+         jLabel3.setText("Bace");
+         jLabel8.setText("bace*altura");
+         jTextField2.setText("");
+         jTextField1.setText("");
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,6 +316,8 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
